@@ -30,6 +30,7 @@ export class StockChartComponent implements OnInit {
     let socket = this.ioService.socket;
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext('2d');
 
+
     socket.on('user connected', stocks => {
       this.loading = false;
       this.drawChart(stocks);
@@ -52,6 +53,7 @@ export class StockChartComponent implements OnInit {
   }
 
   drawChart(stocks) {
+    console.log(stocks)
     let width = (<HTMLCanvasElement>this.canvas.nativeElement).width;
     let height = (<HTMLCanvasElement>this.canvas.nativeElement).height;
     if(this.chart) this.chart.destroy();
@@ -60,6 +62,7 @@ export class StockChartComponent implements OnInit {
     this.labels = [];
 
     if(stocks.length > 0) {
+      console.log(stocks);
       stocks[0]['series'].forEach(serie => {
         this.labels.push(serie['moment']);
       });
@@ -67,9 +70,11 @@ export class StockChartComponent implements OnInit {
       stocks.forEach(obj => {
         let color = randomColor({luminosity: 'dark', format: 'rgba', alpha: 1});
         let data = [];
-        obj['series'].forEach(obj => {
-          data.push(Number(obj['value']));
-        });
+        if(obj['series']){
+          obj['series'].forEach(obj => {
+            data.push(Number(obj['value']));
+          });
+        }
         this.datasets.push({
           label: obj['symbol'],
           borderColor: color,
