@@ -1,0 +1,18 @@
+<div class="columns" *ngIf="loading">
+  <div class="column is-half is-offset-one-quarter">
+    <ng-template [ngIf]="stocksToLoad !== undefined && stocksLoaded !== undefined">
+      <p class="field has-text-centered">Updating stocks... {{((stocksLoaded /  stocksToLoad) * 100).toFixed(0)}}%</p>
+      <progress class="progress is-small is-primary" [value]="stocksLoaded" [max]="stocksToLoad"></progress>
+      <div class="field has-text-centered">
+        <span class="button is-loading is-link"></span>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <canvas #chart height="128" width="256"></canvas>
+  </div>
+</div>
+
+

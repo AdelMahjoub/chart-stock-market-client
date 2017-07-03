@@ -1,0 +1,38 @@
+<nav class="nav">
+  <div class="container">
+    <div class="nav-left">
+     <a href="/" class="nav-item is-brand">
+      <span class="title is-5">{{ appTitle | titlecase }}</span>
+     </a>
+    </div>
+    <div class="nav-toggle" (click)="toggleNavMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-right nav-menu" #navMenu>
+      <div class="nav-item">
+        <a 
+          href="https://github.com/AdelMahjoub/chart-stock-market-server" 
+          class="button is-outlined is-dark is-small"
+          target="_blank">
+          <span class="icon is-small">
+            <i class="fa fa-github"></i>
+          </span>
+          <span>Github</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a 
+          href="https://glitch.com/edit/#!/chart-stock-app?path=server.js:1:0" 
+          class="button is-outlined is-dark is-small"
+          target="_blank">
+          <span class="icon is-small">
+            <i class="fa fa-bomb"></i>
+          </span>
+          <span>Glitch</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

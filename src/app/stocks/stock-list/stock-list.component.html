@@ -1,0 +1,9 @@
+<div class="columns is-multiline is-mobile">
+  <ng-template [ngIf]="stocks.length > 0">
+    <div 
+      class="column is-1" 
+      *ngFor="let stock of stocks">
+      <app-stock-item [symbol]="stock.symbol"></app-stock-item>
+    </div>
+  </ng-template>
+</div>

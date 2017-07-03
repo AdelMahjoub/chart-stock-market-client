@@ -1,0 +1,35 @@
+<form [formGroup]="searchFrom" (ngSubmit)="submitSearch()">
+  <div class="field has-text-centered">
+    <div class="field has-addons has-addons-centered ">
+      <p class="control has-icons-left has-icons-right">
+        <input 
+          type="text" 
+          class="input"
+          [ngClass]="{'is-danger': stockFound === false, 'is-success': stockFound === true}"
+          placeholder="search stock ..."
+          [formControlName]="'stockSymbol'"
+          autofocus
+          (keydown)="stockFound = undefined">
+        <span class="icon is-small is-left">
+          <i class="fa fa-search"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i 
+            class="fa" 
+            [ngClass]="{'fa-warning': stockFound === false, 'fa-check': stockFound === true}"></i>
+        </span>
+      </p>
+      <p class="control">
+        <button type="submit" class="button is-primary">Add</button>
+      </p>
+    </div>
+    <p 
+      style="height: 20px;"
+      class="help" 
+      [ngClass]="{'is-danger': stockFound === false, 'is-success': stockFound === true}">
+      <span *ngIf="stockSymbol.value !== '' && stockFound === null" class="button is-loading is-link"></span>
+      <span *ngIf="stockSymbol.value !== '' && stockFound === true">Stock Added</span>
+      <span *ngIf="stockSymbol.value !== '' && stockFound === false">Stock not found</span>
+    </p>
+  </div>
+</form>
